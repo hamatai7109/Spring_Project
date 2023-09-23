@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Minus</title>
+</head>
+<body>
+	<h1>引き算</h1>
+	<form style="display: flex; gap: 10px;" action="minus" method="get">
+		<input type="number" name="firstNum" required>
+		<p>-</p>
+		<input type="number" name="secondNum" required>
+		<button type="submit">=</button>
+	</form>
+	<p th:text="${result}"></p>
+</body>
+</html>
