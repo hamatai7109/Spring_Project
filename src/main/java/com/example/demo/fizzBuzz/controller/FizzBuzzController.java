@@ -11,19 +11,17 @@ import com.example.demo.fizzBuzz.service.FizzBuzzService;
 @Controller
 public class FizzBuzzController {
 	private final FizzBuzzService fizzBuzzService;
-	
+
 	public FizzBuzzController(FizzBuzzService fizzBuzzService) {
 		this.fizzBuzzService = fizzBuzzService;
 	}
-	
+
 	@GetMapping("fizzbuzz")
 	public String fizzbuzz(Model model) {
-		List<String> result;
-		
-		result = fizzBuzzService.fizzBuzz();
-		
+		List<String> result = fizzBuzzService.fizzBuzz();
+
 		model.addAttribute("result", result);
-		
-		return "fizzBuzz";	
+
+		return "fizzBuzz";
 	}
 }
