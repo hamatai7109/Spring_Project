@@ -11,21 +11,21 @@ import com.example.demo.AnimalsAPI.repository.AnimalsAPIRepository;
 
 @Service
 public class AnimalsAPIService {
-	private final AnimalsAPIRepository AnimalsAPIRepository;
-	private List<Animals> animalsList;
+	private final AnimalsAPIRepository animalsAPIRepository;
 
-	public AnimalsAPIService(AnimalsAPIRepository AnimalsAPIRepository) throws IOException {
-		this.AnimalsAPIRepository = AnimalsAPIRepository;
-		this.animalsList = Arrays.asList(AnimalsAPIRepository.getAnimals());
+	public AnimalsAPIService(AnimalsAPIRepository animalsAPIRepository) throws IOException {
+		this.animalsAPIRepository = animalsAPIRepository;
 	}
 
 	public List<Animals> getAllAnimals() throws IOException {
-		return animalsList;
+		Animals[] animalsList = animalsAPIRepository.getAnimals();
+
+		return Arrays.asList(animalsList);
 	}
 
-	public List<Animals> getSelectedAnimal(Integer operator) throws IOException {
+	public List<Animals> getSelectedAnimal(String operator) throws IOException {
 
-		Animals[] animal = AnimalsAPIRepository.selectedAnimal(operator);
+		Animals[] animal = animalsAPIRepository.selectedAnimal(operator);
 
 		return Arrays.asList(animal);
 	}

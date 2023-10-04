@@ -13,25 +13,29 @@ import com.example.demo.AnimalsAPI.service.AnimalsAPIService;
 
 @Controller
 public class AnimalsAPIController {
-	private final AnimalsAPIService AnimalsAPIService;
+	private final AnimalsAPIService animalsAPIService;
 
-	public AnimalsAPIController(AnimalsAPIService AnimalsAPIService) {
-		this.AnimalsAPIService = AnimalsAPIService;
+	public AnimalsAPIController(AnimalsAPIService animalsAPIService) {
+		this.animalsAPIService = animalsAPIService;
 	}
 
 	@GetMapping("/animalsSearch")
-	public String showTop() throws IOException {
+	public String showTop(Model model) throws IOException {
+		List<Animals> animalsList = animalsAPIService.getAllAnimals();
+
+		model.addAttribute("animalsList", animalsList);
+
 		return "animalsSearch";
 	}
 
 	@GetMapping("/animalsDetail")
 	public String getData(
-			@RequestParam(name = "operator", required = false) Integer operator,
+			@RequestParam(name = "operator", required = false) String operator,
 			Model model) throws IOException {
 
-		List<Animals> animal = AnimalsAPIService.getSelectedAnimal(operator);
+		List<Animals> animalList = animalsAPIService.getSelectedAnimal(operator);
 
-		model.addAttribute("animalList", animal);
+		model.addAttribute("animalList", animalList);
 
 		return "animalsDetail";
 	}
