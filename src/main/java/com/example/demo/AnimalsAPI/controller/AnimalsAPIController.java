@@ -30,10 +30,10 @@ public class AnimalsAPIController {
 
 	@GetMapping("/animalsDetail")
 	public String getData(
-			@RequestParam(name = "operator", required = false) String operator,
+			@RequestParam(name = "animalId", required = false) String animalId,
 			Model model) throws IOException {
 
-		List<Animals> animalList = animalsAPIService.getSelectedAnimal(operator);
+		List<Animals> animalList = animalsAPIService.getSelectedAnimal(animalId);
 
 		model.addAttribute("animalList", animalList);
 

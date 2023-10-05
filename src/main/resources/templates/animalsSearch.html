@@ -7,7 +7,7 @@
 <body>
 	<h1>動物検索画面</h1>
 	<form style="display: flex; gap: 10px;" action="animalsDetail" method="get">
-		<select name="operator">
+		<select name="animalId">
 			<option 
 				th:each="animal : ${animalsList}" 
 				th:value="${animal.id}" 

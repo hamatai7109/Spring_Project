@@ -27,9 +27,9 @@ public class AnimalsAPIRepository {
 		return animalList;
 	}
 
-	public Animals[] selectedAnimal(String operator) throws IOException {
+	public Animals[] selectedAnimal(String animalId) throws IOException {
 		String url = "https://jsn9xu2vsk.execute-api.ap-northeast-1.amazonaws.com/sample/sampleapi?id="
-				+ operator;
+				+ animalId;
 
 		RestTemplate rest = new RestTemplate();
 

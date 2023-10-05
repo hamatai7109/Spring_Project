@@ -23,9 +23,9 @@ public class AnimalsAPIService {
 		return Arrays.asList(animalsList);
 	}
 
-	public List<Animals> getSelectedAnimal(String operator) throws IOException {
+	public List<Animals> getSelectedAnimal(String animalId) throws IOException {
 
-		Animals[] animal = animalsAPIRepository.selectedAnimal(operator);
+		Animals[] animal = animalsAPIRepository.selectedAnimal(animalId);
 
 		return Arrays.asList(animal);
 	}
