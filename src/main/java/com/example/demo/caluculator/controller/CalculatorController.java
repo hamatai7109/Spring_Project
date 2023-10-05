@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.caluculator.service.CalculatorService;
-import com.example.demo.caluculator.service.CalculatorService.Result;
 
 @Controller
 public class CalculatorController {
@@ -26,11 +25,12 @@ public class CalculatorController {
 		String errorMessage = null;
 
 		if (firstNum != null && secondNum != null && operator != null) {
-			Result calculationResult = calculatorService.calculator(firstNum, secondNum, operator);
-			if (calculationResult.getErrorMessage() != null) {
-				errorMessage = calculationResult.getErrorMessage();
-			} else {
-				result = String.valueOf(calculationResult.getResult());
+			Object[] calculationResult = calculatorService.calculator(firstNum, secondNum, operator);
+			if (calculationResult[0] != null) {
+				result = (String) calculationResult[0];
+			}
+			if (calculationResult[1] != null) {
+				errorMessage = (String) calculationResult[1];
 			}
 		}
 		model.addAttribute("result", result);
